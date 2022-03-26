@@ -47,16 +47,16 @@ def sortowanie():
                 numeracja += 1
 
 def rejestracja():
-    def long_enough(haslo):
-        # Przynajmniej 6 znakow
+    def minznaki(haslo):
+        #Minimum 6 znaków
         return len(haslo) >= 6
 
-    def has_uppercase(haslo):
-        # Przynajmniej jedna duża litera
+    def wielkiznak(haslo):
+        #Minimum 1 wielki zdak
         return len(set(string.ascii_uppercase).intersection(haslo)) > 0
 
-    def has_numeric(haslo):
-        # Musi zawierać cyfrę
+    def jednacyfra(haslo):
+        #Minumum 1 cyfra
         return len(set(string.digits).intersection(haslo)) > 0
 
     nazwausera = input("Podaj login: ")
@@ -72,7 +72,7 @@ def rejestracja():
     #haslo2 = input("Ponownie podaj hasło: ")
     haslo = getpass.getpass("Podaj hasło: ")
     haslo2 = getpass.getpass("Ponownie podaj hasło: ")
-    if haslo == haslo2 and long_enough(haslo) and has_uppercase(haslo) and has_numeric(
+    if haslo == haslo2 and minznaki(haslo) and wielkiznak(haslo) and jednacyfra(
             haslo):
         with open(db_path, 'a', newline='') as file:
             csv_writer = csv.writer(file)
